@@ -347,7 +347,7 @@
 		if(tags_callbacks[id] && tags_callbacks[id]['onChange'])
 		{
 			var f = tags_callbacks[id]['onChange'];
-			f.call(obj, obj, tags[i]);
+			f.call(obj, $(obj), tags[i]);
 		}
 	};
 
