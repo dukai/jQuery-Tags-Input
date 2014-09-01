@@ -87,10 +87,7 @@
 		
 				if (options.unique) {
 					var skipTag = $(this).tagExist(value);
-					if(skipTag == true) {
-					    //Marks fake input as not_valid to let styling it
-    				    $('#'+id+'_tag').addClass('not_valid');
-    				}
+					
 				} else {
 					var skipTag = false; 
 				}
@@ -100,6 +97,10 @@
 						skipTag = true;
 					}
 				}
+				if(skipTag == true) {
+				    //Marks fake input as not_valid to let styling it
+    				    $('#'+id+'_tag').addClass('not_valid');
+    				}
 				if (value !='' && skipTag != true) { 
                     $('<span>').addClass('tag').append(
                         $('<span>').text(value).append('&nbsp;&nbsp;'),
