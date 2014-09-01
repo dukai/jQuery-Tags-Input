@@ -94,7 +94,12 @@
 				} else {
 					var skipTag = false; 
 				}
-				
+				if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
+					var f = tags_callbacks[id]['onAddTag'];
+					if(f.call(this, value) === false){
+						skipTag = true;
+					}
+				}
 				if (value !='' && skipTag != true) { 
                     $('<span>').addClass('tag').append(
                         $('<span>').text(value).append('&nbsp;&nbsp;'),
@@ -118,10 +123,6 @@
 					
 					$.fn.tagsInput.updateTagsField(this,tagslist);
 					
-					if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
-						var f = tags_callbacks[id]['onAddTag'];
-						f.call(this, value);
-					}
 					if(tags_callbacks[id] && tags_callbacks[id]['onChange'])
 					{
 						var i = tagslist.length;
